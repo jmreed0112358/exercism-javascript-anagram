@@ -91,6 +91,14 @@ xdescribe('isAnagram()', function() {
 });
 
 describe('sanitize()', function() {
+  it('throws InvalidParameterException when given invalid input', function() {
+    expect(function() {
+      var anagram = Anagram('');
+      anagram.sanitize({});
+    }).toThrow(
+      new InvalidParameterException('rawWord is not a string'));
+  });
+
   it('removes garbage characters from the input string', function() {
     var anagram = new Anagram('');
     var input = UNPRINTABLE_CHARS + 'FOO BAR4444&*($&(*&$';
