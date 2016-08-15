@@ -1,6 +1,8 @@
-var Anagram = require('./anagram');
+var Anagram = require('./anagram'),
+  NotImplementedException = require('./exceptions/NotImplementedException.js'),
+  InvalidParameterException = require('./exceptions/InvalidParameterException.js');
 
-describe('Anagram', function() {
+xdescribe('matches()', function() {
 
   it('no matches',function() {
     var subject = new Anagram('diaper');
@@ -78,4 +80,14 @@ describe('Anagram', function() {
 
     expect(matches).toEqual(['tan']);
   });
+});
+
+xdescribe('isAnagram()', function() {
+  it('returns true when the given testWord is an anagram of word');
+
+  it('returns false when the given testWord is not an anagram of word');
+});
+
+describe('sanitize()', function() {
+  it('removes garbage characters from the input string');
 });
