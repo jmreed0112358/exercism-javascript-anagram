@@ -23,6 +23,10 @@ Anagram.prototype.sanitize = function(rawWord) {
   var i = 0,
     result = '';
 
+  if (typeof rawWord !== 'string') {
+    throw new InvalidParameterException('rawWord is not a string');
+  }
+
   rawWord = validator.trim(rawWord).toLowerCase();
 
   for (i = 0 ; i < rawWord.length ; i++ ) {
