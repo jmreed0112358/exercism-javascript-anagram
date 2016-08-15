@@ -1,0 +1,19 @@
+{
+  "name": "anagram",
+  "version": "0.0.1",
+  "description": "Exercism: Javascript solution for the anagram problem.",
+  "main": "anagram.js",
+  "scripts": {
+    "test": "jasmine-node anagram.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmreed0112358/exercism-javascript-anagram.git"
+  },
+  "author": "Jeremy M. Reed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmreed0112358/exercism-javascript-anagram/issues"
+  },
+  "homepage": "https://github.com/jmreed0112358/exercism-javascript-anagram#readme"
+}
