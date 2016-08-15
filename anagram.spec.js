@@ -2,6 +2,8 @@ var Anagram = require('./anagram'),
   NotImplementedException = require('./exceptions/NotImplementedException.js'),
   InvalidParameterException = require('./exceptions/InvalidParameterException.js');
 
+const UNPRINTABLE_CHARS = '\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000b\f\r\u000e\u000f\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001a\u001b\u001c\u001d\u001e\u001f';
+
 xdescribe('matches()', function() {
 
   it('no matches',function() {
@@ -89,5 +91,10 @@ xdescribe('isAnagram()', function() {
 });
 
 describe('sanitize()', function() {
-  it('removes garbage characters from the input string');
+  it('removes garbage characters from the input string', function() {
+    var anagram = new Anagram('');
+    var input = UNPRINTABLE_CHARS + 'FOO BAR4444&*($&(*&$';
+    var actual = anagram.sanitize(input);
+    expect(actual).toEqual('foo bar');
+  });
 });
