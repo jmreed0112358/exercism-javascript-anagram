@@ -6,7 +6,7 @@ var Anagram = require('./anagram'),
 
 const UNPRINTABLE_CHARS = '\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000b\f\r\u000e\u000f\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001a\u001b\u001c\u001d\u001e\u001f';
 
-xdescribe('matches()', function() {
+describe('matches()', function() {
 
   it('no matches',function() {
     var subject = new Anagram('diaper');
@@ -15,70 +15,70 @@ xdescribe('matches()', function() {
     expect(matches).toEqual([]);
   });
 
-  xit('detects simple anagram',function() {
+  it('detects simple anagram',function() {
     var subject = new Anagram('ant');
     var matches = subject.matches(['tan', 'stand', 'at']);
 
     expect(matches).toEqual(['tan']);
   });
 
-  xit('does not detect false positives',function() {
+  it('does not detect false positives',function() {
     var subject = new Anagram('galea');
     var matches = subject.matches(['eagle']);
 
     expect(matches).toEqual([]);
   });
 
-  xit('detects multiple anagrams',function() {
+  it('detects multiple anagrams',function() {
     var subject = new Anagram('master');
     var matches = subject.matches(['stream', 'pigeon', 'maters']);
 
     expect(matches).toEqual(['stream', 'maters']);
   });
 
-  xit('does not detect anagram subsets',function() {
+  it('does not detect anagram subsets',function() {
     var subject = new Anagram('good');
     var matches = subject.matches(['dog', 'goody']);
 
     expect(matches).toEqual([]);
   });
 
-  xit('detects anagram',function() {
+  it('detects anagram',function() {
     var subject = new Anagram('listen');
     var matches = subject.matches(['enlists', 'google', 'inlets', 'banana']);
 
     expect(matches).toEqual(['inlets']);
   });
 
-  xit('detects multiple anagrams',function() {
+  it('detects multiple anagrams',function() {
     var subject = new Anagram('allergy');
     var matches = subject.matches(['gallery', 'ballerina', 'regally', 'clergy', 'largely', 'leading']);
 
     expect(matches).toEqual(['gallery', 'regally', 'largely']);
   });
 
-  xit('detects anagrams case-insensitively',function() {
+  it('detects anagrams case-insensitively',function() {
     var subject = new Anagram('Orchestra');
     var matches = subject.matches(['cashregister', 'Carthorse', 'radishes']);
 
     expect(matches).toEqual(['Carthorse']);
   });
 
-  xit('does not detect a word as its own anagram',function() {
+  it('does not detect a word as its own anagram',function() {
     var subject = new Anagram('banana');
     var matches = subject.matches(['Banana']);
 
     expect(matches).toEqual([]);
   });
 
-  xit('matches() accepts string arguments',function() {
+  it('matches() accepts string arguments',function() {
     var subject = new Anagram('ant');
     var matches = subject.matches('stand', 'tan', 'at');
 
     expect(matches).toEqual(['tan']);
   });
 
-  xit('matches() accepts single string argument',function() {
+  it('matches() accepts single string argument',function() {
     var subject = new Anagram('ant');
     var matches = subject.matches('tan');
 
@@ -106,10 +106,10 @@ describe('isAnagram()', function() {
   });
 });
 
-xdescribe('sanitize()', function() {
+describe('sanitize()', function() {
   it('throws InvalidParameterException when given invalid input', function() {
     expect(function() {
-      var anagram = Anagram('');
+      var anagram = new Anagram('');
       anagram.sanitize({});
     }).toThrow(
       new InvalidParameterException('rawWord is not a string'));
