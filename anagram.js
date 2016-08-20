@@ -15,14 +15,41 @@ var Anagram = function(word) {
  * Arguments pulled out from the built in arguments object.
  */
 Anagram.prototype.matches = function() {
-  throw new NotImplementedException();
+  var testWords = [],
+    anagrams = [],
+    i = 0,
+    j = 0;
+
+  for (i = 0 ; i < arguments.length ; i++) {
+    if (typeof arguments[i] === 'string') {
+      testWords.push(arguments[i]);
+    } else if (Array.isArray(arguments[i])) {
+      for (j = 0 ; j < arguments[i].length ; j++ ) {
+        testWords.push(arguments[i][j]);
+      }
+    }
+  }
+
+  for (i = 0 ; i < testWords.length ; i++ ) {
+    if (this.isAnagram(testWords[i])) {
+      anagrams.push(testWords[i]);
+    }
+  }
+
+  return anagrams;
 };
 
 Anagram.prototype.isAnagram = function(testWord) {
   var refDict = {},
     i = 0;
 
+  testWord = this.sanitize(testWord);
+
   if (testWord.length !== this.refWord.length) {
+    return false;
+  }
+
+  if (testWord === this.refWord) {
     return false;
   }
 
