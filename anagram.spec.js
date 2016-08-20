@@ -1,3 +1,5 @@
+'use strict'
+
 var Anagram = require('./anagram'),
   NotImplementedException = require('./exceptions/NotImplementedException.js'),
   InvalidParameterException = require('./exceptions/InvalidParameterException.js');
@@ -84,13 +86,27 @@ xdescribe('matches()', function() {
   });
 });
 
-xdescribe('isAnagram()', function() {
-  it('returns true when the given testWord is an anagram of word');
+describe('isAnagram()', function() {
+  it('returns false when given words of inequal length', function() {
+    var subject = new Anagram('ant');
+    var actual = subject.isAnagram('herp');
+    expect(actual).toEqual(false);
+  });
 
-  it('returns false when the given testWord is not an anagram of word');
+  it('returns true when the given testWord is an anagram of word', function() {
+    var subject = new Anagram('ant');
+    var actual = subject.isAnagram('tan');
+    expect(actual).toEqual(true);
+  });
+
+  it('returns false when the given testWord is not an anagram of word', function() {
+    var subject = new Anagram('ant');
+    var actual = subject.isAnagram('han');
+    expect(actual).toEqual(false);
+  });
 });
 
-describe('sanitize()', function() {
+xdescribe('sanitize()', function() {
   it('throws InvalidParameterException when given invalid input', function() {
     expect(function() {
       var anagram = Anagram('');
